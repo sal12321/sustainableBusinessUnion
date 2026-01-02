@@ -310,5 +310,15 @@
   </footer>
 
 </div>
+
+<script>
+fetch("/api/theme")
+  .then(res => res.json())
+  .then(theme => {
+    document.documentElement.style.setProperty("--primary", theme.primary);
+    document.documentElement.style.setProperty("--secondary", theme.secondary);
+  });
+</script>
+
 </body>
 </html>
