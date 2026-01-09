@@ -57,6 +57,7 @@ body {
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 24px;
+
 }
 
 .card h2 {
@@ -67,7 +68,10 @@ body {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
+justify-content:center;
+align-items: center;
+
+gap : 2rem;
 }
 
 input {

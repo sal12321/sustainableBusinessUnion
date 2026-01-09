@@ -32,7 +32,7 @@
       <section class="card">
         <h2>Add New Event</h2>
 
-        <form id="eventForm">
+        <form id="eventForm" method = "post" action = "addEvent" >
           <div class="grid">
             <input type="text" id="title" placeholder="Event Title" required />
             <input type="text" id="artists" placeholder="Artists / Acts" required />
@@ -65,15 +65,44 @@
 
       <div class="card">
   <h2>Public Site Theme</h2>
-
-  <div class="grid">
+<form action="/updateColor" method ="POST">
+    <div class="grid">
+          
+    
     <h4>Choose primary color</h4>
-    <input type="color" id="primary" title="Primary color">
+    <input type="color" id="primary" title="Primary color" name = "primary">
      <h4>Choose secondry color</h4>
-    <input type="color" id="secondary" title="Secondary color">
+    <input type="color" id="secondary" title="Secondary color" name = "secondary">
+     <h4>Choose other color</h4>
+    <input type="color" id="other" title="Other color" name = "other">
   </div>
 
-  <button onclick="updatePublicTheme()">Update Public Theme</button>
+
+
+  <!-- <button onclick="updatePublicTheme()">Update Public Theme</button> -->
+  <button type ="submit" >Update Public Theme</button>
+
+</div>
+
+
+      <div class="card">
+  <h2>Public Site Title</h2>
+<form action="/updateTitle" method ="POST">
+    <div class="grid">
+          
+    
+    <h3>Hero Title</h3>
+    <input type="text" id="heroTitle" title="Primary color" name = "heroTitle" placeholder="Hero-Title">
+     <h3>Hero Sub Title </h3>
+    <input type="text" id="heroSubTitle"  name = "heroSubTitle" placeholder="Hero-Sub-Title">
+
+  </div>
+
+
+
+  <!-- <button onclick="updatePublicTheme()">Update Public Theme</button> -->
+  <button type ="submit" >Update Public Theme</button>
+
 </div>
 
 
@@ -81,6 +110,7 @@
   </div>
 
   <script src="./index.js"></script>
-  <script src="./adminThemeUpdate.js"></script>
+  <script src="./Events.js"></script>
+  <!-- <script src="./adminThemeUpdate.js"></script> -->
 </body>
 </html>

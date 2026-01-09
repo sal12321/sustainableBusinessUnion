@@ -1,6 +1,6 @@
     :root {
       /* --primary: #009344;
-      --primary-dark: #006635;
+      --secondary: #006635;
       --secondary: #1d8b45; */
       --green-bg: #e4f4e9;
       --orange-main: #f6a623;
@@ -172,7 +172,7 @@
       background-image: linear-gradient(
           90deg,
           var(--primary),
-          var(--primary-dark)
+          var(--secondary)
         ),
         url("hero-bg.jpg");
       /* replace with real image */
@@ -337,7 +337,7 @@
       align-items: center;
       justify-content: center;
       font-size: 0.8rem;
-      color: var(--primary-dark);
+      color: var(--secondary);
       font-weight: 600;
     }
 
@@ -585,7 +585,7 @@
     .deal-title {
       font-size: 1.9rem;
       text-transform: uppercase;
-      color: var(--primary-dark);
+      color: var(--secondary);
     }
 
     .deal-grid {
@@ -669,7 +669,7 @@
     .topics-heading {
       font-size: 1.5rem;
       margin-bottom: 1.4rem;
-      color: var(--primary-dark);
+      color: var(--secondary);
     }
 
     .topics-columns {

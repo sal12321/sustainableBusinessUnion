@@ -1,66 +1,142 @@
-const form = document.getElementById("eventForm");
-const table = document.getElementById("eventTable");
+// const app = require("./src/app/expressApp");
 
-let events = JSON.parse(localStorage.getItem("events")) || [];
+// const form = document.getElementById("eventForm");
+// const table = document.getElementById("eventTable");
 
-function saveEvents() {
-  localStorage.setItem("events", JSON.stringify(events));
-}
+// let events = JSON.parse(localStorage.getItem("events")) || [];
 
-function renderEvents() {
-  table.innerHTML = "";
+// function saveEvents() {
+//   localStorage.setItem("events", JSON.stringify(events));
+// }
 
-  events.forEach((event, index) => {
-    const row = document.createElement("tr");
+// function renderEvents() {
+//   table.innerHTML = "";
 
-    row.innerHTML = `
-      <td>${event.date} ${event.time}</td>
-      <td>${event.title}</td>
-      <td>${event.artists}</td>
-      <td>${event.location}</td>
-      <td><span class="delete" onclick="deleteEvent(${index})">Delete</span></td>
-    `;
+//   events.forEach((event, index) => {
+//     const row = document.createElement("tr");
 
-    table.appendChild(row);
-  });
-}
+//     row.innerHTML = `
+//       <td>${event.date} ${event.time}</td>
+//       <td>${event.title}</td>
+//       <td>${event.artists}</td>
+//       <td>${event.location}</td>
+//       <td><span class="delete" onclick="deleteEvent(${index})">Delete</span></td>
+//     `;
 
-function deleteEvent(index) {
-  events.splice(index, 1);
-  saveEvents();
-  renderEvents();
-}
+//     table.appendChild(row);
+//   });
+// }
 
-form.addEventListener("submit", e => {
-  e.preventDefault();
+// function deleteEvent(index) {
+//   events.splice(index, 1);
+//   saveEvents();
+//   renderEvents();
+// }
 
-  const event = {
-    title: title.value,
-    artists: artists.value,
-    date: date.value,
-    time: time.value,
-    location: location.value
-  };
+// form.addEventListener("submit", e => {
+//   e.preventDefault();
 
-  events.push(event);
-  saveEvents();
-  renderEvents();
-  form.reset();
-});
+//   const event = {
+//     title: title.value,
+//     artists: artists.value,
+//     date: date.value,
+//     time: time.value,
+//     location: location.value
+//   };
 
-renderEvents();
+//   events.push(event);
+//   saveEvents();
+//   renderEvents();
+//   form.reset();
+// });
+
+// renderEvents();
 
 
 
-function updatePublicTheme() {
-  const primary = document.getElementById("primary").value;
-  const secondary = document.getElementById("secondary").value;
+// function updatePublicTheme() {
+//   const primary = document.getElementById("primary").value;
+//   const secondary = document.getElementById("secondary").value;
 
-  fetch("/update-public-theme", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ primary, secondary })
-  })
-  .then(() => alert("Public theme updated"))
-  .catch(err => console.error(err));
-}
+//   fetch("/update-public-theme", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ primary, secondary })
+//   })
+//   .then(() => alert("Public theme updated"))
+//   .catch(err => console.error(err));
+// }
+
+
+// const express = require("express") ;
+// const app = express();
+
+// const path = require("path");
+
+
+
+
+
+// app.set("view engine" , "ejs");
+
+
+
+
+// app.listen(port , (req, res) =>{
+//     console.log("server is working");
+// })
+
+
+
+
+
+// app.get("/" , (req, res)=>{
+//     res.send("root is working")
+// })
+
+// app.post("/addEvent", (req, res) =>{
+//     console.log("event added");
+//     saveEvent();
+// })
+
+
+
+// const eventSchema = new mongoose.Schema({
+
+//     Title :{
+//         type :String  
+//     },
+
+//     Artist :{
+//         type : String    
+//     },
+//     Date:{
+//         type : Date
+//     },
+//     Location : {
+//         type : String
+//     }
+// })
+
+// // this is my repo
+// const eventRepo =  mongoose.model("Event", eventSchema);
+
+// const newEvent = new eventRepo({
+//     title : "this is title",
+//     Artist : "aaqib",
+//     Date : new Date(),
+//     Location : "Delhi"
+
+
+// })
+
+// function saveEvent(){
+// newEvent.save()
+// .then((res) =>{
+//     console.log(res);
+// })
+// .catch((err) =>{
+//     console.log(err);
+// })
+// }
+
