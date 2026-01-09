@@ -12,6 +12,6 @@ const TitleSchema = new mongoose.Schema({
 });
 
 // this is my repo
-const titleRepo = mongoose.model("udpateTitle", TitleSchema);
+const titleRepo = mongoose.model("updateTitle", TitleSchema);
 
 module.exports = titleRepo; // exporting the colorRepo
