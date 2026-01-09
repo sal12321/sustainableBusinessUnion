@@ -1,14 +1,31 @@
-const mongoose = require("mongoose");
 
-async function connectDB() {
-  try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/SbuAdminUpdate");
-    console.log(" MongoDB connected");
-  } catch (err) {
-    console.error(" MongoDB connection failed");
-    console.error(err);
-    process.exit(1); // crash app if DB fails
-  }
+
+
+
+const mongoose = require("mongoose");
+MONGO_URI="mongodb+srv://uselessacc3112_db_user:LmZkm2hkgsj1GJco@cluster0.lixzv0a.mongodb.net/journaldb?retryWrites=true&w=majority&appName=Cluster0"
+
+
+
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
 }
 
-module.exports = connectDB;
+async function connectDb() {
+  if (cached.conn) {
+    return cached.conn;
+  }
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGO_URI, {
+      bufferCommands: false,
+    });
+  }
+
+  cached.conn = await cached.promise;
+  return cached.conn;
+}
+
+module.exports = connectDb;

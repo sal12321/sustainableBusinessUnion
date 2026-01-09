@@ -21,6 +21,18 @@ app.set("views", path.join(__dirname, "views"));
 const PORT = process.env.PORT || 3000;
 
 
+(async () => {
+  try {
+    await connectDb();
+    console.log("MongoDB connected");
+  } catch (err) {
+    console.error("MongoDB connection failed", err);
+    process.exit(1);
+  }
+})();
+
+
+
 
 
 
@@ -30,7 +42,8 @@ app.get("/", async (req, res) => {
   try {
 
      // get connected with db
-    connectDb();
+    // await connectDb();
+    // already connected through IIFE
    
      //Fetch from DB
     const colors = await colorRepo.findOne();
