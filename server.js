@@ -87,6 +87,15 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.get("/admin", async (req, res) => {
+  try {
+    const events = await Event.find().sort({ date: 1 });
+    res.render("admin", { events });
+  } catch (err) {
+    res.status(500).send("Failed to load admin panel");
+  }
+});
+
 
 
 
@@ -107,7 +116,8 @@ app.post("/addEvent", async (req, res) => {
       location
     });
 
-    res.redirect("/"); // or wherever admin lives
+    res.redirect("/admin");
+
   } catch (err) {
     console.error(err);
     res.status(500).send("Failed to add event");
