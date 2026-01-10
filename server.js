@@ -126,6 +126,18 @@ app.post("/addEvent", async (req, res) => {
 
 
 
+app.post("/deleteEvent/:id", async (req, res) => {
+  try {
+    await Event.findByIdAndDelete(req.params.id);
+    res.redirect("/admin");
+  } catch (err) {
+    res.status(500).send("Failed to delete event");
+  }
+});
+
+
+
+
 
 app.post("/updateColor", async (req, res) => {
 
