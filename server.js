@@ -26,9 +26,9 @@ const PORT = process.env.PORT || 3000;
     await connectDb();
     //console.log("MongoDB connected");
   } catch (err) {
-    //console.error("MongoDB connection failed", err);
-    process.exit(1);
-  }
+  console.error("MongoDB connection failed:", err.message);
+}
+
 })();
 
 
