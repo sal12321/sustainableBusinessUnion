@@ -108,39 +108,26 @@
         <h3>Upcoming Acts</h3>
         <div class="events-panel-sub">WHO'S COMING TO TOWN?</div>
 
-        <div class="events-list">
-          <div class="event-row">
-            <div class="event-info">
-              <div class="date">Tue, 26 Dec</div>
-              <div class="topic">GREEN ECONOMY</div>
-            </div>
-            <button class="btn-light">Buy Tickets</button>
-          </div>
+<div class="events-list">
+  <% if (events.length === 0) { %>
+    <p>No upcoming events</p>
+  <% } %>
 
-          <div class="event-row">
-            <div class="event-info">
-              <div class="date">Wed, 27 Dec</div>
-              <div class="topic">POLLUTION</div>
-            </div>
-            <button class="btn-light">Buy Tickets</button>
-          </div>
-
-          <div class="event-row">
-            <div class="event-info">
-              <div class="date">Wed, 27 Dec</div>
-              <div class="topic">POLLUTION</div>
-            </div>
-            <button class="btn-light">Buy Tickets</button>
-          </div>
-
-          <div class="event-row">
-            <div class="event-info">
-              <div class="date">Wed, 27 Dec</div>
-              <div class="topic">CIRCULAR ECONOMY</div>
-            </div>
-            <button class="btn-light">Buy Tickets</button>
-          </div>
+  <% events.forEach(event => { %>
+    <div class="event-row">
+      <div class="event-info">
+        <div class="date">
+          <%= event.date.toDateString() %>
         </div>
+        <div class="topic">
+          <%= event.title %>
+        </div>
+      </div>
+      <button class="btn-light">Buy Tickets</button>
+    </div>
+  <% }) %>
+</div>
+
 
         <button class="btn-light btn-block">SEE ALL EVENTS</button>
       </div>

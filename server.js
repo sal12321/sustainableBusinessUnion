@@ -1,6 +1,7 @@
 console.log("SERVER FILE LOADED");
 
 const express = require("express");
+const Event = require("./models/Event");
 const app = express();
 const path = require("path");
 const connectDb  = require("./DB/DbConnect")
@@ -20,42 +21,98 @@ app.set("views", path.join(__dirname, "views"));
 
 
 const PORT = process.env.PORT || 3000;
+// const PORT =  3000;
 
 // IFFe to connect with db
 (async () => {
   try {
     await connectDb();
-    //console.log("MongoDB connected");
+    console.log("MongoDB connected");
   } catch (err) {
   console.error("MongoDB connection failed:", err.message);
 }
 
 })();
 
+// app.get("/", async (req, res) => {
+//   try {
+//     const colors = await colorRepo.findOne();
+//     const titles = await titleRepo.findOne();
+
+//     res.render("index", {
+//       colors: colors || {
+//         primary: "#e4aaaaff",
+//         secondary: "#fdc2c2ff",
+//         other: "#ff8181ff"
+//       },
+//       titles: titles || {
+//         heroTitle: "GREEN TECH REVOLUTION",
+//         heroSubTitle: "SUSTAINABLE BUSINESS UNION"
+//       }
+//     });
+//   } catch (err) {
+//     //console.error(err);
+//     res.status(500).send("Failed to load page");
+//   }
+// });
+
+
+
 app.get("/", async (req, res) => {
+  console.log("in root")
   try {
     const colors = await colorRepo.findOne();
+      // console.log(colors)
     const titles = await titleRepo.findOne();
+        console.log(titles)
+    const events = await Event.find();
 
-    res.render("index", {
+
+    console.log(events)
+
+    res.render("index.ejs", {
       colors: colors || {
         primary: "#e4aaaaff",
         secondary: "#fdc2c2ff",
         other: "#ff8181ff"
       },
       titles: titles || {
-        heroTitle: "GREEN TECH REVOLUTION",
-        heroSubTitle: "SUSTAINABLE BUSINESS UNION"
-      }
+        title: "GREEN TECH REVOLUTION",
+        subTitle: "SUSTAINABLE BUSINESS UNION"
+      },
+      events
     });
   } catch (err) {
-    //console.error(err);
     res.status(500).send("Failed to load page");
   }
 });
 
 
 
+
+
+app.post("/addEvent", async (req, res) => {
+  try {
+    const { title, artists, date, time, location } = req.body;
+
+    if (!title || !artists || !date || !time || !location) {
+      return res.status(400).send("All fields required");
+    }
+
+    await Event.create({
+      title,
+      artists,
+      date,
+      time,
+      location
+    });
+
+    res.redirect("/"); // or wherever admin lives
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Failed to add event");
+  }
+});
 
 
 

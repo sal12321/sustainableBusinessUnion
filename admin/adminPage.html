@@ -34,11 +34,12 @@
 
         <form id="eventForm" method = "post" action = "addEvent" >
           <div class="grid">
-            <input type="text" id="title" placeholder="Event Title" required />
-            <input type="text" id="artists" placeholder="Artists / Acts" required />
-            <input type="date" id="date" required placeholder="Date" />
-            <input type="time" id="time" placeholder="Time" required />
-            <input type="text" id="location" placeholder="Location" required />
+<input type="text" name="title" placeholder="Event Title" required />
+<input type="text" name="artists" placeholder="Artists / Acts" required />
+<input type="date" name="date" required />
+<input type="time" name="time" required />
+<input type="text" name="location" placeholder="Location" required />
+
           </div>
 
           <button type="submit">Add Event</button>
@@ -113,8 +114,7 @@
     </main>
   </div>
 
-  <script src="./index.js"></script>
-  <script src="./Events.js"></script>
+
   <!-- <script src="./adminThemeUpdate.js"></script> -->
 </body>
 </html>
