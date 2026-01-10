@@ -59,16 +59,15 @@ const PORT = process.env.PORT || 3000;
 
 
 app.get("/", async (req, res) => {
-  console.log("in root")
+
   try {
     const colors = await colorRepo.findOne();
-      // console.log(colors)
+
     const titles = await titleRepo.findOne();
-        console.log(titles)
+
     const events = await Event.find();
 
 
-    console.log(events)
 
     res.render("index.ejs", {
       colors: colors || {
@@ -148,7 +147,7 @@ app.post("/updateColor", async (req, res) => {
   const { primary, secondary, other } = req.body;
   await colorRepo.deleteMany({})
     .then((result) => {
-      console.log(result)
+      // console.log(result)
 
     })
     .catch((error) => {
@@ -165,7 +164,7 @@ app.post("/updateColor", async (req, res) => {
   colors.save()
     .then((result) => {
 
-      console.log(result);
+      // console.log(result);
     })
     .catch((err) => {
       console.log(err)
@@ -191,7 +190,7 @@ app.post("/updateTitle", async (req, res) => {
   await titleRepo.deleteMany({})
     .then((result) => {
 
-      console.log(result)
+      // console.log(result)
 
     })
     .catch((error) => {
@@ -207,7 +206,7 @@ app.post("/updateTitle", async (req, res) => {
 
   titles.save()
     .then((result) => {
-console.log(result)
+// console.log(result)
     })
     .catch((err) => {
 console.log(err)

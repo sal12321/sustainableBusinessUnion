@@ -109,7 +109,7 @@
         <div class="events-panel-sub">WHO'S COMING TO TOWN?</div>
 
 <div class="events-list">
-  <% if (events.length === 0) { %>
+  <% if (!events || events.length === 0) { %>
     <p>No upcoming events</p>
   <% } %>
 
@@ -117,16 +117,27 @@
     <div class="event-row">
       <div class="event-info">
         <div class="date">
-          <%= event.date.toDateString() %>
+          <%= event.date.toDateString() %> • <%= event.time %>
         </div>
+
         <div class="topic">
           <%= event.title %>
         </div>
+
+        <div class="artists">
+          <strong>Speakers:</strong> <%= event.artists %>
+        </div>
+
+        <div class="location">
+          <strong>Location:</strong> <%= event.location %>
+        </div>
       </div>
+
       <button class="btn-light">Buy Tickets</button>
     </div>
   <% }) %>
 </div>
+
 
 
         <button class="btn-light btn-block">SEE ALL EVENTS</button>

@@ -69,17 +69,21 @@
   <% } %>
 
   <% events.forEach(event => { %>
-    <tr>
-      <td><%= event.date.toDateString() %></td>
-      <td><%= event.title %></td>
-      <td><%= event.artists %></td>
-      <td><%= event.location %></td>
-      <td>
-        <form method="POST" action="/deleteEvent/<%= event._id %>" style="display:inline">
-          <button type="submit">Delete</button>
-        </form>
-      </td>
-    </tr>
+<tr>
+  <td>
+    <%= event.date.toDateString() %><br>
+    <small><%= event.time %></small>
+  </td>
+  <td><%= event.title %></td>
+  <td><%= event.artists %></td>
+  <td><%= event.location %></td>
+  <td>
+    <form method="POST" action="/deleteEvent/<%= event._id %>">
+      <button type="submit">Delete</button>
+    </form>
+  </td>
+</tr>
+
   <% }) %>
 </tbody>
 
