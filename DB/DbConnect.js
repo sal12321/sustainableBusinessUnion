@@ -3,7 +3,8 @@
 
 
 const mongoose = require("mongoose");
-MONGO_URI="mongodb+srv://uselessacc3112_db_user:LmZkm2hkgsj1GJco@cluster0.lixzv0a.mongodb.net/journaldb?retryWrites=true&w=majority&appName=Cluster0"
+MONGO_URI=process.env.MONGO_URI
+// MONGO_URI="mongodb+srv://uselessacc3112_db_user:LmZkm2hkgsj1GJco@cluster0.lixzv0a.mongodb.net/journaldb?retryWrites=true&w=majority&appName=Cluster0"
 
 
 
