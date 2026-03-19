@@ -485,7 +485,7 @@
       align-items: stretch;
     }
 
-    .about-photo {
+    /* .about-photo {
       border-radius: 4px;
       overflow: hidden;
       background: #ddd;
@@ -496,7 +496,7 @@
       background: var(--gray-light);
       border-radius: 4px;
       padding: 1.6rem 1.8rem;
-    }
+    } */
 
     .tag-small {
       display: inline-block;

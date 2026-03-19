@@ -77,11 +77,22 @@
   <td><%= event.title %></td>
   <td><%= event.artists %></td>
   <td><%= event.location %></td>
-  <td>
+  <!-- <td>
     <form method="POST" action="/deleteEvent/<%= event._id %>">
       <button type="submit">Delete</button>
     </form>
-  </td>
+  </td> -->
+  <td>
+  <!-- Edit Button -->
+  <a href="/editEvent/<%= event._id %>">
+    <button type="button">Edit</button>
+  </a>
+
+  <!-- Delete Button -->
+  <form method="POST" action="/deleteEvent/<%= event._id %>">
+    <button type="submit">Delete</button>
+  </form>
+</td>
 </tr>
 
   <% }) %>
@@ -125,6 +136,10 @@
     <input type="text" id="title" title="Primary color" name = "title" placeholder="Hero-Title">
      <h3>Hero Sub Title </h3>
     <input type="text" id="subTitle"  name = "subTitle" placeholder="Hero-Sub-Title">
+    <h3>Hero Eyebrow</h3>
+    <input type="text" name="heroEyebrow" placeholder="Hero Eyebrow Text" />
+    <h3>Hero URL</h3>
+    <input type="text" name="heroUrl" placeholder="Hero URL (e.g. www.example.com)" />
 
   </div>
 
@@ -136,11 +151,69 @@
 
 </div>
 
+<div class="card">
+  <h2>Update Logo</h2>
+
+  <form action="/updateLogo" method="POST">
+    <div class="grid">
+
+      <input type="text" name="logoMark" placeholder="Logo Mark (e.g. SBU)" />
+      <input type="text" name="logoTextTop" placeholder="Top Text" />
+      <input type="text" name="logoTextBottom" placeholder="Bottom Text" />
+
+    </div>
+
+    <button type="submit">Update Logo</button>
+  </form>
+</div>
+<div class="card">
+  <h2>Col Card Section</h2>
+
+ <form action="/updateColCard" method="POST" enctype="multipart/form-data">
+    <div class="grid">
+
+      <input type="text" name="label" placeholder="Label" />
+      <input type="text" name="heading" placeholder="Heading" />
+      <input type="text" name="description" placeholder="Description" />
+      <input type="file" name="image" accept="image/*" />
+
+    </div>
+
+    <button type="submit">Update Section</button>
+  </form>
+</div>
+<div class="card">
+  <h2>Update Video</h2>
+
+  <form action="/updateVideo" method="POST">
+    <input type="text" name="videoUrl" placeholder="Paste YouTube embed URL" />
+    <button type="submit">Update Video</button>
+  </form>
+</div>
+<div class="card">
+  <h2>Update About Section</h2>
+
+  <form action="/updateAbout" method="POST">
+    <input type="text" name="title" placeholder="About Title" />
+    <input type="text" name="description" placeholder="About Description" />
+    <input 
+  type="text" 
+  name="images" 
+  placeholder="Enter image URLs separated by commas" 
+/>
+
+
+
+    <button type="submit">Update About</button>
+  </form>
+</div>
+
+
 
     </main>
   </div>
 
 
-  <!-- <script src="./adminThemeUpdate.js"></script> -->
+  
 </body>
 </html>

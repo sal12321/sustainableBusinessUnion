@@ -1,21 +1,24 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Sustainable Business Union – Green Tech Revolution</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sustainable Business Union – Green Tech Revolution</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
 
-  <!-- Font Awesome for social icons -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-        integrity="sha512-Sn/e8bNG0Ax7Anxr1j403rwhhtjfiPgk41IrT9jp+1rssZCvGSqtEtFPi0PfrxGX2YeliYg+6TSGT+bVfVd4Yw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"/>
-<!-- <link rel="stylesheet" href="public-theme.css"> -->
-<style>
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-Sn/e8bNG0Ax7Anxr1j403rwhhtjfiPgk41IrT9jp+1rssZCvGSqtEtFPi0PfrxGX2YeliYg+6TSGT+bVfVd4Yw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="public-theme.css"> -->
+    <style>
   :root {
     --primary: <%= colors.primary %>;
 
@@ -24,305 +27,356 @@
   }
 </style>
 
-<link rel="stylesheet" href="SBU.css">
 
-</head>
-<body>
-<div class="page">
 
-  <!-- NAVBAR -->
-  <header>
+    <link rel="stylesheet" href="SBU.css">
+    <link rel="stylesheet" href="/css/style.css">
 
- 
-    <div class="wrapper nav">
-      <div class="nav-left">
-        <div class="logo-mark">SB</div>
+  </head>
+  <body>
+    <div class="page">
+
+      <!-- NAVBAR -->
+      <header>
+
+        <div class="wrapper nav">
+          <div class="nav-left">
+            <!-- <div class="logo-mark">SB</div>
         <div class="logo-text">
           <span>sustainable</span>
           <span>business union</span>
-        </div>
-      </div>
+        </div> -->
+            <div class="logo-mark">
+              <%= logo.logoMark %>
+            </div>
 
-      <nav class="nav-center">
-        <a href="#home">Home</a>
-        <a href="#info">Info</a>
-        <a href="#events">Events</a>
-        <a href="#contact">Contact</a>
-      </nav>
+            <div class="logo-text">
+              <span><%= logo.logoTextTop %></span>
+              <span><%= logo.logoTextBottom %></span>
+            </div>
+          </div>
 
-      <div class="nav-right">
-        <div class="social-links">
+          <nav class="nav-center">
+            <a href="#home">Home</a>
+            <a href="#info">Info</a>
+            <a href="#events">Events</a>
+            <a href="#contact">Contact</a>
+          </nav>
 
-        </div>
+          <div class="nav-right">
+            <div class="social-links">
 
-      </div>
-    </div>
-  </header>
+            </div>
 
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-eyebrow">Renewable Energy</div>
-        <!-- <div class="hero-title-main">GREEN TECH<br>REVOLUTION</div> -->
-        <div class="hero-title-main"> <%= titles.title  %> </div>
-        <!-- <div class="hero-subtitle">sustainable<br/>business union</div> -->
-        <div class="hero-subtitle"><%= titles.subTitle  %> </div>
-        <div class="hero-url">
-          <i class="fa-solid fa-globe"></i>
-          <span>www.sustainablebusinessunion.com</span>
-        </div>
-        
-      </div>
-
-      <div class="hero-right">
-        <div class="hero-card">
-          <div class="hero-card-inner">
-            <div class="hex"></div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </header>
 
-  <!-- UPCOMING EVENTS -->
-  <section id="events" class="section section-gray">
-    <div class="section-inner two-column">
-      <!-- Left -->
-      <div class="col-card">
-        <div class="megaphone-icon">
-          <i class="fa-solid fa-bullhorn"></i>
-        </div>
-        <div class="label-pill">Circular Economy</div>
-        <h2>WHO'S COMING TO TOWN?</h2>
+      <!-- HERO -->
+      <section id="home" class="hero">
+        <div class="hero-inner">
+          <div>
+            <!-- <div class="hero-eyebrow">Renewable Energy</div> -->
+             <div class="hero-eyebrow">
+  <%= titles.heroEyebrow %>
+</div>
+            <!-- <div class="hero-title-main">GREEN TECH<br>REVOLUTION</div> -->
+            <div class="hero-title-main"> <%= titles.title %> </div>
+            <!-- <div class="hero-subtitle">sustainable<br/>business union</div> -->
+            <div class="hero-subtitle"><%= titles.subTitle %> </div>
+            <!-- <div class="hero-url">
+              <i class="fa-solid fa-globe"></i>
+              <span>www.sustainablebusinessunion.com</span>
+            </div> -->
+            <div class="hero-url">
+  <%= titles.heroUrl %>
+</div>
 
-        <div class="col-card-illustration">
-          <div class="placeholder">
-            Illustration / people graphic
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-card">
+              <div class="hero-card-inner">
+                <div class="hex"></div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- Right -->
-      <div class="events-panel">
-        <h3>Upcoming Acts</h3>
-        <div class="events-panel-sub">WHO'S COMING TO TOWN?</div>
+      <!-- UPCOMING EVENTS -->
+      <section id="events" class="section section-gray">
+        <div class="section-inner two-column">
+          <!-- Left -->
+          <div class="col-card">
+            <div class="megaphone-icon">
+              <i class="fa-solid fa-bullhorn"></i>
+            </div>
+            <!-- <div class="label-pill">Circular Economy</div>
+            <h2>WHO'S COMING TO TOWN?</h2> -->
+            <div class="label-pill">
+  <%= colCard?.label || "Circular Economy" %>
+</div>
 
-<div class="events-list">
-  <% if (!events || events.length === 0) { %>
-    <p>No upcoming events</p>
+<h2>
+  <%= colCard?.heading || "WHO'S COMING TO TOWN?" %>
+</h2>
+
+<p>
+  <%= colCard?.description || "Stay updated with our latest events" %>
+</p>
+
+            <div class="col-card-illustration">
+<% if (colCard?.image) { %>
+  <img src="<%= colCard.image %>" alt="col-card image" style="width:100%; border-radius:8px;" />
+<% } else { %>
+  <div class="placeholder">
+    Illustration / people graphic
+  </div>
+<% } %>
+            </div>
+          </div>
+
+          <!-- Right -->
+          <div class="events-panel">
+            <h3>Upcoming Acts</h3>
+            <div class="events-panel-sub">WHO'S COMING TO TOWN?</div>
+
+            <div class="events-list">
+              <% if (!events || events.length === 0) { %>
+              <p>No upcoming events</p>
+              <% } %>
+
+              <% events.forEach(event => { %>
+              <div class="event-row">
+                <div class="event-info">
+                  <div class="date">
+                    <%= event.date.toDateString() %> • <%= event.time %>
+                  </div>
+
+                  <div class="topic">
+                    <%= event.title %>
+                  </div>
+
+                  <div class="artists">
+                    <strong>Speakers:</strong> <%= event.artists %>
+                  </div>
+
+                  <div class="location">
+                    <strong>Location:</strong> <%= event.location %>
+                  </div>
+                </div>
+
+                <button class="btn-light">Buy Tickets</button>
+              </div>
+              <% }) %>
+            </div>
+
+            <button class="btn-light btn-block">SEE ALL EVENTS</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEO -->
+      <section class="video-section" id="info">
+        <div class="video-frame">
+          <!-- <div class="video-placeholder">
+            Video Placeholder (YouTube embed here)
+          </div> -->
+          <div class="video-placeholder">
+  <% if (video?.videoUrl) { %>
+    <iframe 
+      width="100%" 
+      height="100%" 
+      src="<%= video.videoUrl %>" 
+      frameborder="0" 
+      allowfullscreen>
+    </iframe>
+  <% } else { %>
+    <p>No video available</p>
   <% } %>
-
-  <% events.forEach(event => { %>
-    <div class="event-row">
-      <div class="event-info">
-        <div class="date">
-          <%= event.date.toDateString() %> • <%= event.time %>
-        </div>
-
-        <div class="topic">
-          <%= event.title %>
-        </div>
-
-        <div class="artists">
-          <strong>Speakers:</strong> <%= event.artists %>
-        </div>
-
-        <div class="location">
-          <strong>Location:</strong> <%= event.location %>
-        </div>
-      </div>
-
-      <button class="btn-light">Buy Tickets</button>
-    </div>
-  <% }) %>
 </div>
+        </div>
+      </section>
 
+      <!-- ABOUT / GREEN CONSORTIUM -->
+<section class="about-section wrapper">
 
+  <div class="about-grid">
 
-        <button class="btn-light btn-block">SEE ALL EVENTS</button>
+    <div class="about-photo">
+      <div class="carousel">
+        <img class="slide active" src="https://picsum.photos/400/250?1">
+        <img class="slide" src="https://picsum.photos/400/250?2">
+        <img class="slide" src="https://picsum.photos/400/250?3">
+
+        <button class="prev">❮</button>
+        <button class="next">❯</button>
       </div>
     </div>
-  </section>
 
-  <!-- VIDEO -->
-  <section class="video-section" id="info">
-    <div class="video-frame">
-      <div class="video-placeholder">
-        Video Placeholder (YouTube embed here)
-      </div>
+    <div class="about-card">
+      <h3>About Us</h3>
+      <p>We are committed to sustainability.</p>
     </div>
-  </section>
 
-  <!-- ABOUT / GREEN CONSORTIUM -->
-  <section class="about-section">
-    <div class="about-grid">
-      <div class="about-photo">
-        <!-- Replace with actual image -->
-        <img src="about-photo.jpg" alt="People at event" />
-      </div>
-      <article class="about-card">
-        <div class="tag-small">Green Consortium</div>
-        <h3>Delivering Circular Economy Since 2011</h3>
-        <p>
-          Sustainable Business Union is a collaborative platform that empowers
-          organizations to build resilient, eco-friendly, and future-ready
-          business models.
-        </p>
-      </article>
-    </div>
-  </section>
+  </div>
 
-  <!-- THE DEAL -->
-  <section class="deal-section">
-    <div class="deal-inner">
-      <div class="deal-header">
-        <div class="deal-megaphone">
-          <i class="fa-solid fa-bullhorn"></i>
-        </div>
-        <div class="deal-label">Circular Economy</div>
-        <div class="deal-pills">
-          <span class="deal-pill">Everything you need</span>
-          <span class="deal-pill">To know</span>
-        </div>
-        <h2 class="deal-title">The Deal</h2>
-      </div>
+</section>
 
-      <div class="deal-grid">
-        <div class="deal-card">
-          <h4>Expert Guidance</h4>
-          <p>
-            Sustainable Business Union – a collaborative platform helping
-            businesses adopt future-ready, environmentally responsible, and
-            profitable sustainability solutions.
-          </p>
-        </div>
-        <div class="deal-card">
-          <h4>Innovative Strategies</h4>
-          <p>
-            From circular economy models to climate-aligned roadmaps, we help
-            you design strategies that work in the real world.
-          </p>
-        </div>
-        <div class="deal-card">
-          <h4>Industry Network</h4>
-          <p>
-            Connect with partners, experts, and peers driving sustainability
-            across sectors and geographies.
-          </p>
-        </div>
-        <div class="deal-card">
-          <h4>Impact Approach</h4>
-          <p>
-            Data-driven frameworks that measure environmental and business
-            impact so you can scale what works.
-          </p>
-        </div>
-      </div>
 
-      <button class="btn-ghost">Apply to be subject matter expert</button>
-    </div>
-  </section>
-
-  <!-- TOPICS + WHY CHOOSE US + NEWSLETTER + CONTACT -->
-  <section class="topics-section" id="contact">
-    <div class="topics-inner">
-
-      <div class="topics-grid">
-        <div class="topics-cards">
-          <div class="topics-label">Circular Economy</div>
-          <h3 class="topics-heading">Everything you need to explore</h3>
-
-          <div class="topics-columns">
-            <div class="topic-card">
-              <h5>Earth (Land &amp; Soil)</h5>
-              <p>
-                Unsustainable use is leading to deforestation,
-                desertification, and food insecurity.
-              </p>
-              <span>Explore</span>
+      <!-- THE DEAL -->
+      <section class="deal-section">
+        <div class="deal-inner">
+          <div class="deal-header">
+            <div class="deal-megaphone">
+              <i class="fa-solid fa-bullhorn"></i>
             </div>
-            <div class="topic-card">
-              <h5>Water</h5>
-              <p>
-                Threats include pollution, overuse, and climate-driven
-                droughts that challenge communities.
-              </p>
-              <span>Explore</span>
+            <div class="deal-label">Circular Economy</div>
+            <div class="deal-pills">
+              <span class="deal-pill">Everything you need</span>
+              <span class="deal-pill">To know</span>
             </div>
-            <div class="topic-card">
-              <h5>Air (Atmosphere)</h5>
+            <h2 class="deal-title">The Deal</h2>
+          </div>
+
+          <div class="deal-grid">
+            <div class="deal-card">
+              <h4>Expert Guidance</h4>
               <p>
-                Sustainability targets focus on reducing air pollution and
-                greenhouse gas emissions.
+                Sustainable Business Union – a collaborative platform helping
+                businesses adopt future-ready, environmentally responsible, and
+                profitable sustainability solutions.
               </p>
-              <span>Explore</span>
+            </div>
+            <div class="deal-card">
+              <h4>Innovative Strategies</h4>
+              <p>
+                From circular economy models to climate-aligned roadmaps, we
+                help
+                you design strategies that work in the real world.
+              </p>
+            </div>
+            <div class="deal-card">
+              <h4>Industry Network</h4>
+              <p>
+                Connect with partners, experts, and peers driving sustainability
+                across sectors and geographies.
+              </p>
+            </div>
+            <div class="deal-card">
+              <h4>Impact Approach</h4>
+              <p>
+                Data-driven frameworks that measure environmental and business
+                impact so you can scale what works.
+              </p>
             </div>
           </div>
+
+          <button class="btn-ghost">Apply to be subject matter expert</button>
         </div>
+      </section>
 
-        <aside class="why-card">
-          <h3>Why choose us?</h3>
-          <p>
-            Sustainable Business Union is a collaborative platform helping
-            businesses adopt future-ready, environmentally responsible, and
-            profitable sustainability solutions.
-          </p>
-          <button class="btn-see-topics">See all topics</button>
-        </aside>
-      </div>
+      <!-- TOPICS + WHY CHOOSE US + NEWSLETTER + CONTACT -->
+      <section class="topics-section" id="contact">
+        <div class="topics-inner">
 
-      <div class="bottom-grid">
-        <div class="newsletter-card">
-          <h3>Love green economy?<br/>Sign up for our newsletter</h3>
-          <p>
-            …and even if you don’t understand it yet, sign up anyway – it’s
-            free to upgrade.
-          </p>
+          <div class="topics-grid">
+            <div class="topics-cards">
+              <div class="topics-label">Circular Economy</div>
+              <h3 class="topics-heading">Everything you need to explore</h3>
 
-          <div class="checkbox-row">
-            <input type="checkbox" id="newsletter-check" />
-            <label for="newsletter-check">
-              Yes, subscribe me to your newsletter.
-            </label>
+              <div class="topics-columns">
+                <div class="topic-card">
+                  <h5>Earth (Land &amp; Soil)</h5>
+                  <p>
+                    Unsustainable use is leading to deforestation,
+                    desertification, and food insecurity.
+                  </p>
+                  <span>Explore</span>
+                </div>
+                <div class="topic-card">
+                  <h5>Water</h5>
+                  <p>
+                    Threats include pollution, overuse, and climate-driven
+                    droughts that challenge communities.
+                  </p>
+                  <span>Explore</span>
+                </div>
+                <div class="topic-card">
+                  <h5>Air (Atmosphere)</h5>
+                  <p>
+                    Sustainability targets focus on reducing air pollution and
+                    greenhouse gas emissions.
+                  </p>
+                  <span>Explore</span>
+                </div>
+              </div>
+            </div>
+
+            <aside class="why-card">
+              <h3>Why choose us?</h3>
+              <p>
+                Sustainable Business Union is a collaborative platform helping
+                businesses adopt future-ready, environmentally responsible, and
+                profitable sustainability solutions.
+              </p>
+              <button class="btn-see-topics">See all topics</button>
+            </aside>
           </div>
 
-          <form class="newsletter-form">
-            <input type="email" placeholder="Email*" required />
-            <button type="submit">Subscribe now</button>
-          </form>
+          <div class="bottom-grid">
+            <div class="newsletter-card">
+              <h3>Love green economy?<br />Sign up for our newsletter</h3>
+              <p>
+                …and even if you don’t understand it yet, sign up anyway – it’s
+                free to upgrade.
+              </p>
+
+              <div class="checkbox-row">
+                <input type="checkbox" id="newsletter-check" />
+                <label for="newsletter-check">
+                  Yes, subscribe me to your newsletter.
+                </label>
+              </div>
+
+              <form class="newsletter-form">
+                <input type="email" placeholder="Email*" required />
+                <button type="submit">Subscribe now</button>
+              </form>
+            </div>
+
+            <div class="contact-card">
+              <h3>Questions? Contact</h3>
+              <div class="contact-line">
+                <div class="contact-label">Email</div>
+                <div>info@sustainablebusinessunion.com</div>
+              </div>
+              <div class="contact-line">
+                <div class="contact-label">Address</div>
+                <div>Canary Wharf, London</div>
+              </div>
+              <div class="contact-line">
+                <div class="contact-label">Phone</div>
+                <div>+44 7770 264192</div>
+              </div>
+            </div>
+          </div>
+
         </div>
+      </section>
 
-        <div class="contact-card">
-          <h3>Questions? Contact</h3>
-          <div class="contact-line">
-            <div class="contact-label">Email</div>
-            <div>info@sustainablebusinessunion.com</div>
-          </div>
-          <div class="contact-line">
-            <div class="contact-label">Address</div>
-            <div>Canary Wharf, London</div>
-          </div>
-          <div class="contact-line">
-            <div class="contact-label">Phone</div>
-            <div>+44 7770 264192</div>
-          </div>
+      <footer>
+        <div class="wrapper">
+          <span>&copy; 2025 Sustainable Business Union. All rights
+            reserved.</span>
+          <span>Green Tech Revolution – Circular Economy</span>
         </div>
-      </div>
+      </footer>
 
     </div>
-  </section>
 
-  <footer>
-    <div class="wrapper">
-      <span>&copy; 2025 Sustainable Business Union. All rights reserved.</span>
-      <span>Green Tech Revolution – Circular Economy</span>
-    </div>
-  </footer>
-
-</div>
-
-<script>
+    <script>
 fetch("/api/theme")
   .then(res => res.json())
   .then(theme => {
@@ -331,6 +385,27 @@ fetch("/api/theme")
   });
 </script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  let index = 0;
+  const slides = document.querySelectorAll(".slide");
 
-</body>
+  function show(i) {
+    slides.forEach(s => s.classList.remove("active"));
+    slides[i].classList.add("active");
+  }
+
+  document.querySelector(".next").onclick = () => {
+    index = (index + 1) % slides.length;
+    show(index);
+  };
+
+  document.querySelector(".prev").onclick = () => {
+    index = (index - 1 + slides.length) % slides.length;
+    show(index);
+  };
+});
+</script>
+<!-- <script src="/js/carousel.js"></script> -->
+  </body>
 </html>

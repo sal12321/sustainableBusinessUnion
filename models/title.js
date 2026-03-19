@@ -1,17 +1,10 @@
 const mongoose = require("mongoose");
 
-const TitleSchema = new mongoose.Schema({
-
-  title: {
-    type: String
-  },
-
-  subTitle: {
-    type: String
-  }
+const titleSchema = new mongoose.Schema({
+  title: String,
+  subTitle: String,
+  heroEyebrow: String,
+  heroUrl: String
 });
 
-// this is my repo
-const titleRepo = mongoose.model("updateTitle", TitleSchema);
-
-module.exports = titleRepo; // exporting the colorRepo
+module.exports = mongoose.model("Title", titleSchema);

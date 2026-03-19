@@ -7,14 +7,13 @@
   "type": "commonjs",
   "main": "admin.js",
   "scripts": {
-     "start": "node server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^5.2.1",
-    "mongoose": "^9.1.2"
+    "mongoose": "^9.1.2",
+    "multer": "^2.1.1"
   }
 }
-
-
