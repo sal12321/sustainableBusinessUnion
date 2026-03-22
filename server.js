@@ -10,9 +10,10 @@ const titleRepo = require("./models/title");
 const logoRepo = require("./models/logo");
 const colCardRepo = require("./models/colCard");
 const videoRepo = require("./models/video");
-const multer = require("multer");
+// const multer = require("multer");
 const aboutRepo = require("./models/about");
-
+const upload = require("./config/multer");
+const Page = require("./models/Page");
 
 
 app.use(express.json());
@@ -24,16 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname);
-  }
-});
 
-const upload = multer({ storage });
 
 
 const PORT = process.env.PORT || 3000;
@@ -57,8 +49,11 @@ const PORT = process.env.PORT || 3000;
 app.get("/", async (req, res) => {
 
   try {
-    const colors = await colorRepo.findOne();
-
+   const colors = await colorRepo.findOne() || {
+      primary:   "#009344",
+      secondary: "#006635",
+      other:     "#f6a623"
+    };
     const titles = await titleRepo.findOne();
 
     const events = await Event.find();
@@ -105,6 +100,7 @@ app.get("/admin", async (req, res) => {
   }
 });
 
+
 app.get("/editEvent/:id", async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
@@ -112,6 +108,17 @@ app.get("/editEvent/:id", async (req, res) => {
   } catch (err) {
     res.status(500).send("Failed to load edit page");
   }
+});
+
+app.get("/privacy", (req, res) => {
+  res.render("privacy");
+});
+
+app.get("/terms", (req, res) => {
+  res.render("terms");
+});
+app.get("/contact", (req, res) => {
+  res.render("contact");
 });
 app.post("/updateEvent/:id", async (req, res) => {
   try {
@@ -179,49 +186,36 @@ app.post("/addEvent", async (req, res) => {
     res.status(500).send("Failed to add event");
   }
 });
-// app.post("/updateColCard", async (req, res) => {
-//   try {
-//     const { label, heading, description } = req.body;
 
-//     await colCardRepo.findOneAndUpdate(
-//       {},
-//       { label, heading, description },
-//       { upsert: true }
-//     );
 
-//     res.redirect("/");
-
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).send("Failed to update col-card");
-//   }
-// });
-app.post("/updateColCard", upload.single("image"), async (req, res) => {
+app.post("/updateColCard", upload.array("images", 5), async (req, res) => {
   try {
     const { label, heading, description } = req.body;
 
-    let imagePath = null;
+    const updateData = {
+      label,
+      heading,
+      description
+    };
 
-    if (req.file) {
-      imagePath = "/uploads/" + req.file.filename;
+    // only update images if provided
+    if (req.files && req.files.length > 0) {
+      updateData.images = req.files.map(file => "/uploads/" + file.filename);
     }
 
     await colCardRepo.findOneAndUpdate(
       {},
+      updateData,
       {
-        label,
-        heading,
-        description,
-        ...(imagePath && { image: imagePath })
-      },
-      { upsert: true }
+        upsert: true,
+        new: true
+      }
     );
 
     res.redirect("/");
-
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Failed to update col-card");
+    console.error("Update ColCard Error:", err);
+    res.status(500).send("Failed to update ColCard");
   }
 });
 
@@ -240,116 +234,24 @@ app.post("/deleteEvent/:id", async (req, res) => {
 
 
 
+
+
 app.post("/updateColor", async (req, res) => {
+  try {
+    const { primary, secondary, other } = req.body;
 
+    await colorRepo.findOneAndUpdate(
+      {},
+      { primary, secondary, other },
+      { upsert: true, new: true }
+    );
 
-
-  //console.log("req recieved for color update");
-
-  const { primary, secondary, other } = req.body;
-  await colorRepo.deleteMany({})
-    .then((result) => {
-      // console.log(result)
-
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-  const colors = new colorRepo({
-    primary,
-    secondary,
-    other
-  })
-
-
-
-  colors.save()
-    .then((result) => {
-
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-
-
-
-  const titles = await titleRepo.findOne();
-  const events = await Event.find();
-// res.render("index.ejs", { colors, titles, events });
-res.redirect("/");
-
-
-  // res.render("index.ejs", { colors, titles });
-
-
-
-})
-// app.post("/updateTitle", async (req, res) => {
-
-
-
-
-//   const { title, subTitle } = req.body;
-//   // delete the previous color from db;
-//   await titleRepo.deleteMany({})
-//     .then((result) => {
-
-//       // console.log(result)
-
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     })
-
-//   const titles = new titleRepo({
-//     title,
-//     subTitle
-//   })
-
-
-
-//   titles.save()
-//     .then((result) => {
-//       // console.log(result)
-//     })
-//     .catch((err) => {
-//       console.log(err)
-//     })
-
-
-
-
-//   const colors = await colorRepo.findOne();
-//   const events = await Event.find();
-
-
-//   res.render("index.ejs", { colors, titles, events });
-
-
-
-// })
-
-// 2
-
-// app.post("/updateTitle", async (req, res) => {
-//   try {
-
-//     const { title, subTitle, heroEyebrow } = req.body;
-
-//     await titleRepo.findOneAndUpdate(
-//       {},
-//       { title, subTitle, heroEyebrow },
-//       { upsert: true }
-//     );
-
-//     res.redirect("/");
-
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).send("Failed to update title");
-//   }
-// });
-
+    res.redirect("/");
+  } catch (err) {
+    console.error("Failed to update color:", err);
+    res.status(500).send("Failed to update color");
+  }
+});
 
 
 app.post("/updateTitle", async (req, res) => {
@@ -389,28 +291,52 @@ app.post("/updateVideo", async (req, res) => {
   }
 });
 
-app.post("/updateAbout", async (req, res) => {
-  try {
-    const { title, description, images } = req.body;
 
-    // convert comma-separated string → array
-    const imageArray = images ? images.split(",") : [];
+
+app.post("/updateAbout", upload.array("images", 10), async (req, res) => {
+  try {
+    const { title, description } = req.body;
+
+    const updateData = {
+      title,
+      description
+    };
+
+    // only update images if files uploaded
+    if (req.files && req.files.length > 0) {
+      updateData.images = req.files.map(file => "/uploads/" + file.filename);
+    }
 
     await aboutRepo.findOneAndUpdate(
       {},
+      updateData,
       {
-        title,
-        description,
-        images: imageArray
-      },
-      { upsert: true }
+        upsert: true,
+        new: true
+      }
     );
 
     res.redirect("/");
+  } catch (err) {
+    console.error("Update About Error:", err);
+    res.status(500).send("Failed to update About section");
+  }
+});
+
+app.post("/updatePage", async (req, res) => {
+  try {
+    const { name, content } = req.body;
+
+    await Page.findOneAndUpdate(
+      { name },
+      { content },
+      { upsert: true }
+    );
+
+    res.redirect("/admin");
 
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Failed to update about section");
+    res.status(500).send("Failed to update page");
   }
 });
 
