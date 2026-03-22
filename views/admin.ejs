@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <title>Event Admin Panel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./style.css" />
+  <!-- <link rel="stylesheet" href="/css/style.css" /> -->
+  <link rel="stylesheet" href="/css/style.css"  />
 </head>
 <body>
 
@@ -77,11 +78,7 @@
   <td><%= event.title %></td>
   <td><%= event.artists %></td>
   <td><%= event.location %></td>
-  <!-- <td>
-    <form method="POST" action="/deleteEvent/<%= event._id %>">
-      <button type="submit">Delete</button>
-    </form>
-  </td> -->
+
   <td>
   <!-- Edit Button -->
   <a href="/editEvent/<%= event._id %>">
@@ -169,18 +166,20 @@
 <div class="card">
   <h2>Col Card Section</h2>
 
- <form action="/updateColCard" method="POST" enctype="multipart/form-data">
-    <div class="grid">
 
-      <input type="text" name="label" placeholder="Label" />
-      <input type="text" name="heading" placeholder="Heading" />
-      <input type="text" name="description" placeholder="Description" />
-      <input type="file" name="image" accept="image/*" />
+<form action="/updateColCard" method="POST" enctype="multipart/form-data">
+  <div class="grid">
 
-    </div>
+    <input type="text" name="label" placeholder="Label" required />
+    <input type="text" name="heading" placeholder="Heading" required />
+    <input type="text" name="description" placeholder="Description" required />
 
-    <button type="submit">Update Section</button>
-  </form>
+    <input type="file" name="images" multiple accept="image/*" />
+
+  </div>
+
+  <button type="submit">Update Section</button>
+</form>
 </div>
 <div class="card">
   <h2>Update Video</h2>
@@ -190,21 +189,38 @@
     <button type="submit">Update Video</button>
   </form>
 </div>
+
 <div class="card">
   <h2>Update About Section</h2>
 
-  <form action="/updateAbout" method="POST">
-    <input type="text" name="title" placeholder="About Title" />
-    <input type="text" name="description" placeholder="About Description" />
-    <input 
-  type="text" 
-  name="images" 
-  placeholder="Enter image URLs separated by commas" 
-/>
+ <form action="/updateAbout" method="POST" enctype="multipart/form-data">
+  <div class="grid">
 
+    <input type="text" name="title" placeholder="About Title" required />
+    <input type="text" name="description" placeholder="About Description" required />
 
+    <input type="file" name="images" multiple accept="image/*" />
 
-    <button type="submit">Update About</button>
+  </div>
+
+  <button type="submit">Update About</button>
+</form>
+</div>
+
+<div class="card">
+  <h2>Manage Pages</h2>
+
+  <form action="/updatePage" method="POST">
+    
+    <select name="name">
+      <option value="privacy">Privacy Policy</option>
+      <option value="terms">Terms & Conditions</option>
+    </select>
+
+    <textarea name="content" rows="8" placeholder="Enter page content..." required></textarea>
+
+    <button type="submit">Save</button>
+
   </form>
 </div>
 
