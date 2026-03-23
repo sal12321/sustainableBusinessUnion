@@ -19,8 +19,8 @@ node_modules/
 yarn.lock
 
 # ── User Uploads ─────────────────────────────────────────────
-public/uploads/
-uploads/
+# public/uploads/
+# uploads/
 
 # ── Logs ─────────────────────────────────────────────────────
 logs/
