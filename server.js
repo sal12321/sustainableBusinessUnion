@@ -70,48 +70,51 @@ connectDb()
 
 app.get("/", async (req, res) => {
 
-  try {
-   const colors = await colorRepo.findOne() || {
-      primary:   "#009344",
-      secondary: "#006635",
-      other:     "#f6a623"
-    };
-    const titles = await titleRepo.findOne();
-
-    const events = await Event.find();
-    const logo = await logoRepo.findOne();
-    const colCard = await colCardRepo.findOne();
-    const video = await videoRepo.findOne();
-    const about = await aboutRepo.findOne();
+    res.send("Server is working");
 
 
+//   try {
+//    const colors = await colorRepo.findOne() || {
+//       primary:   "#009344",
+//       secondary: "#006635",
+//       other:     "#f6a623"
+//     };
+//     const titles = await titleRepo.findOne();
+
+//     const events = await Event.find();
+//     const logo = await logoRepo.findOne();
+//     const colCard = await colCardRepo.findOne();
+//     const video = await videoRepo.findOne();
+//     const about = await aboutRepo.findOne();
 
 
 
-res.render("index", {
-  colors,
-  titles,
-  events,
-  logo,
-  colCard: colCard || {
-    label: "ANNOUNCEMENT",
-    heading: "Upcoming Events",
-    description: "Stay updated with our latest events"
-  },
-  video: video || {
-  videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
-},
-about: about || {
-  title: "ABOUT US",
-  description: "We are committed to sustainable development and innovation.",
-  image: "/images/default-about.jpg"
-}
 
-});
-  } catch (err) {
-  console.error(err);
-  res.status(500).send("Failed to load page");
-}
+
+// res.render("index", {
+//   colors,
+//   titles,
+//   events,
+//   logo,
+//   colCard: colCard || {
+//     label: "ANNOUNCEMENT",
+//     heading: "Upcoming Events",
+//     description: "Stay updated with our latest events"
+//   },
+//   video: video || {
+//   videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+// },
+// about: about || {
+//   title: "ABOUT US",
+//   description: "We are committed to sustainable development and innovation.",
+//   image: "/images/default-about.jpg"
+// }
+
+// });
+//   } catch (err) {
+//   console.error(err);
+//   res.status(500).send("Failed to load page");
+// }
 });
 
 app.get("/admin", async (req, res) => {
