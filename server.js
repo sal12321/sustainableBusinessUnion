@@ -64,12 +64,16 @@ app.set("views", path.join(__dirname, "views"));
 //     process.exit(1); // kill app if DB fails
 //   });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
-// START SERVER IMMEDIATELY
+if (!PORT) {
+  throw new Error("PORT is not defined");
+}
+
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
+console.log("PORT VALUE:", process.env.PORT);
 
 // THEN connect DB (non-blocking)
 connectDb()
@@ -86,51 +90,51 @@ connectDb()
 
 app.get("/", async (req, res) => {
 
-    res.send("Server is working");
+    // res.send("Server is working");
 
 
-//   try {
-//    const colors = await colorRepo.findOne() || {
-//       primary:   "#009344",
-//       secondary: "#006635",
-//       other:     "#f6a623"
-//     };
-//     const titles = await titleRepo.findOne();
+  try {
+   const colors = await colorRepo.findOne() || {
+      primary:   "#009344",
+      secondary: "#006635",
+      other:     "#f6a623"
+    };
+    const titles = await titleRepo.findOne();
 
-//     const events = await Event.find();
-//     const logo = await logoRepo.findOne();
-//     const colCard = await colCardRepo.findOne();
-//     const video = await videoRepo.findOne();
-//     const about = await aboutRepo.findOne();
-
-
+    const events = await Event.find();
+    const logo = await logoRepo.findOne();
+    const colCard = await colCardRepo.findOne();
+    const video = await videoRepo.findOne();
+    const about = await aboutRepo.findOne();
 
 
 
-// res.render("index", {
-//   colors,
-//   titles,
-//   events,
-//   logo,
-//   colCard: colCard || {
-//     label: "ANNOUNCEMENT",
-//     heading: "Upcoming Events",
-//     description: "Stay updated with our latest events"
-//   },
-//   video: video || {
-//   videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
-// },
-// about: about || {
-//   title: "ABOUT US",
-//   description: "We are committed to sustainable development and innovation.",
-//   image: "/images/default-about.jpg"
-// }
 
-// });
-//   } catch (err) {
-//   console.error(err);
-//   res.status(500).send("Failed to load page");
-// }
+
+res.render("index", {
+  colors,
+  titles,
+  events,
+  logo,
+  colCard: colCard || {
+    label: "ANNOUNCEMENT",
+    heading: "Upcoming Events",
+    description: "Stay updated with our latest events"
+  },
+  video: video || {
+  videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+},
+about: about || {
+  title: "ABOUT US",
+  description: "We are committed to sustainable development and innovation.",
+  image: "/images/default-about.jpg"
+}
+
+});
+  } catch (err) {
+  console.error(err);
+  res.status(500).send("Failed to load page");
+}
 });
 
 app.get("/admin", async (req, res) => {
@@ -386,3 +390,6 @@ app.post("/updatePage", async (req, res) => {
 
 
 
+setInterval(() => {
+  console.log("Server alive check");
+}, 30000);
