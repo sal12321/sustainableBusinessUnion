@@ -36,7 +36,7 @@ app.set("views", path.join(__dirname, "views"));
 
 
 
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 // const PORT =  3000;
 
 // IFFe to connect with db
@@ -51,17 +51,33 @@ const PORT = process.env.PORT || 3000;
 // })();
 
 // for railways deployment
+// connectDb()
+//   .then(() => {
+//     console.log("MongoDB connected");
+
+//     app.listen(PORT, '0.0.0.0', () => {
+//       console.log(`Server running on port ${PORT}`);
+//     });
+//   })
+//   .catch(err => {
+//     console.error("MongoDB connection failed:", err);
+//     process.exit(1); // kill app if DB fails
+//   });
+
+const PORT = process.env.PORT || 3000;
+
+// START SERVER IMMEDIATELY
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+// THEN connect DB (non-blocking)
 connectDb()
   .then(() => {
     console.log("MongoDB connected");
-
-    app.listen(PORT, '0.0.0.0', () => {
-      console.log(`Server running on port ${PORT}`);
-    });
   })
   .catch(err => {
     console.error("MongoDB connection failed:", err);
-    process.exit(1); // kill app if DB fails
   });
 
 
