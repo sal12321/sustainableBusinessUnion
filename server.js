@@ -32,15 +32,29 @@ const PORT = process.env.PORT || 3000;
 // const PORT =  3000;
 
 // IFFe to connect with db
-(async () => {
-  try {
-    await connectDb();
-    console.log("MongoDB connected");
-  } catch (err) {
-    console.error("MongoDB connection failed:", err.message);
-  }
+// (async () => {
+//   try {
+//     await connectDb();
+//     console.log("MongoDB connected");
+//   } catch (err) {
+//     console.error("MongoDB connection failed:", err.message);
+//   }
 
-})();
+// })();
+
+// for railways deployment
+connectDb()
+  .then(() => {
+    console.log("MongoDB connected");
+
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error("MongoDB connection failed:", err);
+    process.exit(1); // kill app if DB fails
+  });
 
 
 
@@ -221,7 +235,7 @@ app.post("/updateColCard", upload.array("images", 5), async (req, res) => {
 
 
 
-app.post("/deleteEvent/:id", async (req, res) => {
+app.get("/deleteEvent/:id", async (req, res) => {
   try {
     await Event.findByIdAndDelete(req.params.id);
     res.redirect("/");
@@ -342,8 +356,8 @@ app.post("/updatePage", async (req, res) => {
 
 
 // start server
-app.listen(PORT, () => {
-  // console.log(`Server running on http://localhost:${PORT}`);
+app.listen(PORT,'0.0.0.0', () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
 
 
