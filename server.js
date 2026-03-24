@@ -64,7 +64,7 @@ app.set("views", path.join(__dirname, "views"));
 //     process.exit(1); // kill app if DB fails
 //   });
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 if (!PORT) {
   throw new Error("PORT is not defined");
@@ -244,6 +244,9 @@ app.post("/updateColCard", upload.array("images", 5), async (req, res) => {
       description
     };
 
+    console.log("FILES:", req.files);
+console.log("BODY:", req.body);
+
     // only update images if provided
     if (req.files && req.files.length > 0) {
       updateData.images = req.files.map(file => "/uploads/" + file.filename);
@@ -261,7 +264,8 @@ app.post("/updateColCard", upload.array("images", 5), async (req, res) => {
     res.redirect("/");
   } catch (err) {
     console.error("Update ColCard Error:", err);
-    res.status(500).send("Failed to update ColCard");
+    // res.status(500).send("Failed to update ColCard");
+    res.status(500).send(err.message);
   }
 });
 
