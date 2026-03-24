@@ -1,3 +1,11 @@
+process.on('uncaughtException', err => {
+  console.error('UNCAUGHT EXCEPTION:', err);
+});
+
+process.on('unhandledRejection', err => {
+  console.error('UNHANDLED REJECTION:', err);
+});
+
 console.log("SERVER FILE LOADED");
 
 const express = require("express");
@@ -101,8 +109,9 @@ about: about || {
 
 });
   } catch (err) {
-    res.status(500).send("Failed to load page");
-  }
+  console.error(err);
+  res.status(500).send("Failed to load page");
+}
 });
 
 app.get("/admin", async (req, res) => {
@@ -355,9 +364,6 @@ app.post("/updatePage", async (req, res) => {
 });
 
 
-// start server
-// app.listen(PORT,'0.0.0.0', () => {
-//   console.log(`Server running on http://localhost:${PORT}`);
-// });
+
 
 
