@@ -14,17 +14,7 @@ app.set("views", path.join(__dirname, "views"));
 
 
 
-// async function main(){
-//     await mongoose.connect("mongodb://127.0.0.1:27017/udpateColors")
-// }
 
-// main().then( (res) =>{
-//     console.log("connection success with db for colors");
-
-// })
-// .catch((err) =>{
-//     console.log("error in connection with db for color update")
-// })
 
 
 
