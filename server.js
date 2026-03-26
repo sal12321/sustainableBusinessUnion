@@ -365,6 +365,3 @@ app.post("/updatePage", async (req, res) => {
 
 
 
-setInterval(() => {
-  console.log("Server alive check");
-}, 30000);
