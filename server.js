@@ -22,6 +22,10 @@ const videoRepo = require("./models/video");
 const aboutRepo = require("./models/about");
 const upload = require("./config/multer");
 const Page = require("./models/Page");
+const libraryRoutes = require("./routes/libraryRoutes");
+
+
+app.use(libraryRoutes);
 
 
 app.use(express.json());
